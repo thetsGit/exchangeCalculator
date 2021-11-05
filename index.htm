@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GoSwap</title>
+    <link rel="stylesheet" href="style.css" id="styleSheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="mainContainer">
+      <section class="mainContent">
+        <!-- heading -->
+        <header id="mainContent__header">
+          <img
+            src="assets/logo/exchangeCalculatorLogo.png"
+            id="logo"
+            alt="GoSwap Logo"
+          />
+          <div class="headerTitle">
+            <h1 class="header--mainTitle">Go Swap</h1>
+            <p class="header--snippet">
+              Advanced money exchange calculator
+              <span class="information"
+                >( we use browser local storage to store datas )</span
+              >
+            </p>
+          </div>
+        </header>
+        <!-- heading ends -->
+
+        <!-- inputbox starts -->
+        <section class="inputBox">
+          <section class="inputFields">
+            <span class="eachInputWrap eachInputWrap-input">
+              <label for="input" class="labelText bold">Amount</label>
+              <div class="inputWrap">
+                <input
+                  name="input"
+                  type="number"
+                  id="input"
+                  class="inactiveField"
+                  min="1"
+                  max="10000000000000"
+                />
+                <img
+                  src="assets/images/loading-buffering.gif"
+                  id="loadingGif"
+                  alt="loading gif"
+                />
+              </div>
+            </span>
+            <span class="eachInputWrap">
+              <label for="fromCurrency" class="labelText bold">From</label>
+              <div class="dropdownWrap" id="fromBox">
+                <div
+                  data-state="close"
+                  class="dropdownBtn"
+                  onclick="ddBtnClick(event)"
+                >
+                  <span id="fromBoxData"></span>
+                  <span class="arrow"><i class="fas fa-caret-down"></i></span>
+                  <span class="times close"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="dropdownOptions">
+                  <div class="ddOptionsWrap"></div>
+                </div>
+              </div>
+            </span>
+            <span id="swapBtn" class="contentCenter btn"
+              ><i class="fas fa-exchange-alt"></i
+            ></span>
+
+            <span class="eachInputWrap">
+              <label for="toCurrency" class="labelText bold">To</label>
+              <div class="dropdownWrap" id="toBox">
+                <div
+                  data-state="close"
+                  class="dropdownBtn"
+                  onclick="ddBtnClick(event)"
+                >
+                  <span id="toBoxData"></span>
+                  <span class="arrow"><i class="fas fa-caret-down"></i></span>
+                  <span class="times close"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="dropdownOptions">
+                  <div class="ddOptionsWrap"></div>
+                </div>
+              </div>
+            </span>
+          </section>
+          <section id="btnAndResultBox">
+            <button id="saveBtn" class="bold btn">Save</button>
+            <span id="resultBox">
+              <span id="resultAmount"></span>
+              <span id="resultUnit" class="minor"></span>
+            </span>
+          </section>
+        </section>
+        <!-- inputbox ends  -->
+
+        <!-- saved data table  -->
+        <section id="savedDataSection">
+          <div id="savedDataHeader">
+            <p style="font-size: 1.1rem; margin-bottom: 0.8rem; opacity: 0.5">
+              Saved data
+            </p>
+            <button id="savedDataDeleteBtn" class="contentCenter">
+              <i class="far fa-trash-alt" id="trashBinIcon"></i>
+            </button>
+          </div>
+          <table id="table">
+            <thead id="tableHeader">
+              <tr class="tableRow">
+                <th>Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr class="tableRow">
+                <td colspan="4" id="noDataState">No data presented</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <!-- saved data table ends  -->
+      </section>
+      <aside id="rateBoard">
+        <section id="rateBoardHeader" class="contentCenter">
+          <h3 class="subHeading">Exchange Rates</h3>
+        </section>
+        <section id="rateBoardContent"></section>
+      </aside>
+    </main>
+    <script src="./data.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
